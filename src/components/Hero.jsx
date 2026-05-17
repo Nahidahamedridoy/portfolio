@@ -116,7 +116,7 @@ const Hero = () => {
             <div className="absolute inset-0 bg-gradient-to-tr from-blue-400/20 to-purple-400/20 rounded-full blur-3xl opacity-50 group-hover:opacity-80 transition-opacity animate-pulse"></div>
             <img
               alt="Nahid Portrait"
-              className="w-full h-full object-cover hero-mask scale-110 grayscale hover:grayscale-0 transition-all duration-1000"
+              className="w-full h-full object-cover hero-mask scale-110  hover:grayscale-0 transition-all duration-1000"
               src="/photo.jpg"
             />
           </div>
