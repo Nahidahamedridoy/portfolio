@@ -3,27 +3,51 @@
 import React from "react";
 import { motion } from "framer-motion";
 import { 
-  SiJavascript, SiReact, SiNextdotjs, SiMongodb, 
-  SiTailwindcss, SiGit, SiHtml5, SiCss, 
-  SiFigma, SiDaisyui
+  SiHtml5, SiCss, SiTailwindcss, SiJavascript, SiTypescript, SiReact, SiNextdotjs,
+  SiNodedotjs, SiExpress,
+  SiMongodb, SiFirebase,
+  SiGit, SiGithub, SiPostman, SiVercel
 } from "react-icons/si";
-import { HiLightningBolt } from "react-icons/hi"; 
-import { MdOutlineSecurity } from "react-icons/md"; 
+import { BiLogoVisualStudio } from "react-icons/bi";
 import Magnetic from "./Magnetic";
 
-const techStack = [
-  { name: "JavaScript", icon: SiJavascript, color: "#F7DF1E" },
-  { name: "React", icon: SiReact, color: "#61DAFB" },
-  { name: "Next.js", icon: SiNextdotjs, color: "#000000" },
-  { name: "MongoDB", icon: SiMongodb, color: "#47A248" },
-  { name: "Tailwind CSS", icon: SiTailwindcss, color: "#06B6D4" },
-  { name: "Git", icon: SiGit, color: "#F05032" },
-  { name: "HTML5", icon: SiHtml5, color: "#E34F26" },
-  { name: "CSS3", icon: SiCss, color: "#1572B6" },
-  { name: "Hero UI", icon: HiLightningBolt, color: "#FF5733" },
-  { name: "DaisyUI", icon: SiDaisyui, color: "#5ADFED" },
-  { name: "Figma", icon: SiFigma, color: "#F24E1E" },
-  { name: "Better Auth", icon: MdOutlineSecurity, color: "#3B82F6" },
+const skillCategories = [
+  {
+    title: "Frontend",
+    skills: [
+      { name: "HTML", icon: SiHtml5, color: "#E34F26" },
+      { name: "CSS", icon: SiCss, color: "#1572B6" },
+      { name: "Tailwind CSS", icon: SiTailwindcss, color: "#06B6D4" },
+      { name: "JavaScript", icon: SiJavascript, color: "#F7DF1E" },
+      { name: "TypeScript", icon: SiTypescript, color: "#3178C6" },
+      { name: "React", icon: SiReact, color: "#61DAFB" },
+      { name: "Next.js", icon: SiNextdotjs, color: "#000000" },
+    ]
+  },
+  {
+    title: "Backend",
+    skills: [
+      { name: "Node.js", icon: SiNodedotjs, color: "#339933" },
+      { name: "Express.js", icon: SiExpress, color: "#000000" },
+    ]
+  },
+  {
+    title: "Database",
+    skills: [
+      { name: "MongoDB", icon: SiMongodb, color: "#47A248" },
+      { name: "Firebase", icon: SiFirebase, color: "#FFCA28" },
+    ]
+  },
+  {
+    title: "Tools & Technologies",
+    skills: [
+      { name: "Git", icon: SiGit, color: "#F05032" },
+      { name: "GitHub", icon: SiGithub, color: "#181717" },
+      { name: "VS Code", icon: BiLogoVisualStudio, color: "#007ACC" },
+      { name: "Postman", icon: SiPostman, color: "#FF6C37" },
+      { name: "Vercel", icon: SiVercel, color: "#000000" },
+    ]
+  }
 ];
 
 const containerVariants = {
@@ -58,36 +82,39 @@ const TechCard = ({ tech }) => {
           y: -10,
           transition: { duration: 0.3, ease: "easeOut" }
         }}
-        className="group relative"
+        className="group relative h-full"
       >
         {/* Hover Glow Effect */}
         <div 
           className="absolute -inset-1 rounded-[2rem] opacity-0 group-hover:opacity-100 transition duration-500 blur-xl z-0"
           style={{ backgroundColor: `${tech.color}30` }}
+          aria-hidden="true"
         />
         
         {/* Card Content */}
-        <div className="relative h-full glass-panel p-8 rounded-[2rem] flex flex-col items-center gap-6 border-white/20 group-hover:border-white/60 transition-all duration-500 overflow-hidden z-10 bg-white/30 backdrop-blur-2xl">
+        <div className="relative h-full glass-panel p-6 md:p-8 rounded-[2rem] flex flex-col items-center justify-center gap-4 md:gap-6 border-white/20 group-hover:border-white/60 transition-all duration-500 overflow-hidden z-10 bg-white/30 backdrop-blur-2xl">
           <div 
-            className="w-16 h-16 rounded-2xl flex items-center justify-center transition-all duration-500 group-hover:scale-110 group-hover:rotate-6 shadow-inner"
+            className="w-12 h-12 md:w-16 md:h-16 rounded-2xl flex items-center justify-center transition-all duration-500 group-hover:scale-110 group-hover:rotate-6 shadow-inner"
             style={{ 
               backgroundColor: `${tech.color}10`,
               color: tech.color 
             }}
+            aria-hidden="true"
           >
-            <tech.icon className="text-[32px]" />
+            <tech.icon className="text-[28px] md:text-[32px]" />
           </div>
           
           <div className="text-center">
-            <p className="font-bold text-on-surface text-[15px] tracking-tight group-hover:text-primary transition-colors">
+            <p className="font-bold text-on-surface text-[14px] md:text-[15px] tracking-tight group-hover:text-primary transition-colors">
               {tech.name}
             </p>
           </div>
 
           {/* Subtle bottom indicator */}
           <div 
-            className="absolute bottom-0 left-1/2 -translate-x-1/2 h-1 w-0 group-hover:w-1/2 transition-all duration-500 rounded-t-full"
+            className="absolute bottom-0 left-1/2 -translate-x-1/2 h-1.5 w-0 group-hover:w-1/2 transition-all duration-500 rounded-t-full"
             style={{ backgroundColor: tech.color }}
+            aria-hidden="true"
           />
         </div>
       </motion.div>
@@ -125,17 +152,32 @@ const Technologies = () => {
           </motion.h2>
         </div>
 
-        <motion.div 
-          variants={containerVariants}
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true, margin: "-100px" }}
-          className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-8"
-        >
-          {techStack.map((tech, idx) => (
-            <TechCard key={idx} tech={tech} />
+        <div className="space-y-16 md:space-y-24">
+          {skillCategories.map((category, catIdx) => (
+            <div key={catIdx} className="space-y-8">
+              <motion.h3 
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                className="text-[24px] md:text-[32px] font-bold text-on-surface text-center md:text-left"
+              >
+                {category.title}
+              </motion.h3>
+              
+              <motion.div 
+                variants={containerVariants}
+                initial="hidden"
+                whileInView="visible"
+                viewport={{ once: true, margin: "-50px" }}
+                className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-4 md:gap-8"
+              >
+                {category.skills.map((tech, idx) => (
+                  <TechCard key={idx} tech={tech} />
+                ))}
+              </motion.div>
+            </div>
           ))}
-        </motion.div>
+        </div>
       </div>
     </section>
   );

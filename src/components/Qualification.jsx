@@ -8,22 +8,22 @@ import Magnetic from "./Magnetic";
 
 const experienceData = [
   {
-    title: "Frontend Developer",
-    subtitle: "Freelance & Personal Projects",
-    date: "2024 - Present",
-    desc: "Developing high-end frontend applications using React, Next.js, and modern CSS frameworks."
+    title: "Frontend Development",
+    subtitle: "Self-directed Learning & Practice",
+    date: "Late 2024",
+    desc: "Began learning web fundamentals — HTML, CSS, JavaScript — and built a solid foundation in responsive design and modern development workflows."
   },
   {
-    title: "NextJs Developer",
-    subtitle: "Modern UI & Responsive Design",
+    title: "React.js & Tailwind CSS",
+    subtitle: "Personal Projects",
+    date: "2024 - 2025",
+    desc: "Built interactive single-page applications using React, focusing on component architecture, state management, and API integrations."
+  },
+  {
+    title: "Next.js & TypeScript",
+    subtitle: "Ongoing Skill Advancement",
     date: "2025 - Present",
-    desc: "Specializing in component-driven development and creating interactive, animated user interfaces."
-  },
-  {
-    title: "Web Developer",
-    subtitle: "Building Responsive Websites",
-    date: "2024 - Present",
-    desc: "Crafting pixel-perfect, mobile-first websites with a focus on clean code and accessibility."
+    desc: "Mastering Next.js for server-side rendering and full-stack capabilities while progressively improving TypeScript skills for more robust, type-safe code."
   },
 ];
 

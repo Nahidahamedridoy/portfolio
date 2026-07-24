@@ -4,13 +4,15 @@ import React from "react";
 import { motion } from "framer-motion";
 import Magnetic from "./Magnetic";
 
-const skills = [
-  { name: "HTML/CSS", level: 100 },
-  { name: "Tailwind CSS", level: 95 },
-  { name: "JavaScript", level: 85 },
-  { name: "React.js", level: 80 },
-  { name: "Next.js", level: 85 },
-  { name: "MongoDB", level: 80 },
+import { FiMonitor, FiCode, FiZap, FiGlobe, FiCpu, FiBookOpen } from "react-icons/fi";
+
+const highlights = [
+  { icon: FiMonitor, label: "Responsive UI Development", desc: "Pixel-perfect layouts across all screen sizes" },
+  { icon: FiCode,    label: "Clean & Maintainable Code", desc: "Readable, well-structured and scalable codebases" },
+  { icon: FiGlobe,  label: "REST API Integration",       desc: "Seamless connection between frontend and backend" },
+  { icon: FiZap,    label: "Performance Optimization",   desc: "Fast load times and smooth user experiences" },
+  { icon: FiCpu,    label: "Problem Solving",            desc: "Breaking down complex challenges into clean solutions" },
+  { icon: FiBookOpen, label: "Continuous Learning",      desc: "Always growing with the latest web technologies" },
 ];
 
 const badges = [
@@ -54,11 +56,14 @@ const About = () => {
           </motion.div>
           
           <motion.div variants={itemVariants} className="space-y-6">
-            <p className="text-body-lg text-on-surface-variant leading-relaxed">
-              I’m a passionate <span className="text-on-surface font-bold">Frontend & Web Developer</span> focused on creating seamless, user-friendly digital solutions. My approach blends aesthetic excellence with technical precision to build clean, maintainable applications that resonate with users.
+            <p className="text-[16px] md:text-[18px] text-on-surface-variant leading-relaxed">
+              Hi, I'm <span className="text-on-surface font-bold">Nahid Ahamed</span>, a dedicated <span className="text-on-surface font-bold">Frontend Developer</span>. My programming journey began in late 2024, and since then, I have developed a strong passion for building modern, responsive, and user-friendly web applications.
             </p>
-            <p className="text-body-lg text-on-surface-variant leading-relaxed">
-              With a deep understanding of modern frameworks like <span className="text-primary font-medium">Next.js</span> and <span className="text-primary font-medium">React</span>, I specialize in transforming complex problems into intuitive interfaces. I thrive in collaborative environments and am constantly refining my stack to stay at the forefront of web innovation.
+            <p className="text-[16px] md:text-[18px] text-on-surface-variant leading-relaxed">
+              While my primary interest lies in Frontend and Full Stack Development, my current focus is mastering <span className="text-primary font-medium">Next.js</span> and continuously improving my <span className="text-primary font-medium">TypeScript</span> skills. My long-term goal is to transition into a proficient Full Stack Developer.
+            </p>
+            <p className="text-[16px] md:text-[18px] text-on-surface-variant leading-relaxed">
+              Outside of writing code, I enjoy gaming, traveling, and playing cricket.
             </p>
           </motion.div>
 
@@ -77,10 +82,12 @@ const About = () => {
               <a 
                 href="/resume.pdf" 
                 target="_blank"
+                rel="noopener noreferrer"
                 className="inline-flex items-center gap-4 bg-primary text-white px-8 md:px-10 py-4 md:py-5 rounded-2xl font-bold hover:shadow-2xl hover:shadow-primary/30 transition-all duration-500 active:scale-95 group"
+                aria-label="Download Resume (opens in a new tab)"
               >
-                Download Resume
-                <div className="w-8 h-8 bg-white/20 rounded-lg flex items-center justify-center group-hover:bg-white/30 transition-colors">
+                <span>Download Resume</span>
+                <div className="w-8 h-8 bg-white/20 rounded-lg flex items-center justify-center group-hover:bg-white/30 transition-colors" aria-hidden="true">
                   <span className="material-symbols-outlined text-[18px]">download</span>
                 </div>
               </a>
@@ -88,39 +95,34 @@ const About = () => {
           </motion.div>
         </div>
         
-        {/* Right Content - Skills */}
+        {/* Right Content - Professional Highlights */}
         <motion.div variants={itemVariants} className="lg:col-span-5 w-full">
           <div className="glass-panel p-8 md:p-12 rounded-[2.5rem] border-primary/5 shadow-2xl shadow-blue-900/5 bg-white/40 backdrop-blur-xl">
             <h3 className="text-[22px] md:text-[24px] font-bold mb-10 flex items-center gap-3 text-on-surface">
-              Technical Expertise
-              <div className="h-[2px] flex-grow bg-gradient-to-r from-primary/20 to-transparent"></div>
+              Professional Highlights
+              <div className="h-[2px] flex-grow bg-gradient-to-r from-primary/20 to-transparent" />
             </h3>
-            
-            <div className="space-y-8">
-              {skills.map((skill) => (
-                <div key={skill.name}>
-                  <div className="flex justify-between items-end mb-3">
-                    <span className="font-bold text-on-surface tracking-tight">{skill.name}</span>
-                    <span className="text-primary font-bold text-[14px]">{skill.level}%</span>
-                  </div>
-                  <div className="h-[7px] bg-primary/5 rounded-full overflow-hidden">
-                    <motion.div 
-                      initial={{ width: 0 }}
-                      whileInView={{ width: `${skill.level}%` }}
-                      viewport={{ once: true }}
-                      transition={{ duration: 1.5, ease: "circOut", delay: 0.2 }}
-                      className="h-full bg-primary rounded-full relative"
-                    >
-                      <div className="absolute inset-0 bg-gradient-to-r from-white/20 to-transparent" />
-                    </motion.div>
-                  </div>
-                </div>
-              ))}
-            </div>
 
-            <div className="mt-12 p-6 rounded-2xl bg-primary/[0.03] border border-primary/5">
-              <p className="text-[14px] text-on-surface-variant leading-relaxed italic">
-                "Continuous learning is the key to creating impactful digital experiences that drive value and innovation."
+            <ul className="space-y-5">
+              {highlights.map(({ icon: Icon, label, desc }) => (
+                <li
+                  key={label}
+                  className="group flex items-start gap-4 p-4 rounded-2xl hover:bg-primary/[0.04] transition-colors duration-300"
+                >
+                  <div className="mt-0.5 w-9 h-9 flex-shrink-0 rounded-xl bg-primary/10 flex items-center justify-center text-primary group-hover:bg-primary group-hover:text-white transition-all duration-300">
+                    <Icon size={17} />
+                  </div>
+                  <div>
+                    <p className="text-[15px] font-bold text-on-surface leading-snug">{label}</p>
+                    <p className="text-[13px] text-on-surface-variant mt-0.5 leading-relaxed">{desc}</p>
+                  </div>
+                </li>
+              ))}
+            </ul>
+
+            <div className="mt-8 p-5 rounded-2xl bg-primary/[0.03] border border-primary/5">
+              <p className="text-[13px] text-on-surface-variant leading-relaxed italic">
+                "The best code is the code that solves real problems — clearly, efficiently, and with the user always in mind."
               </p>
             </div>
           </div>

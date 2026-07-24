@@ -9,26 +9,26 @@ import {
 import Magnetic from "./Magnetic";
 
 const stats = [
-  { label: "Projects Completed", value: "30+", icon: FiAward },
-  { label: "Tailwind CSS Skill", value: "95%", icon: FiTrendingUp },
-  { label: "Fast Learner", value: "100%", icon: FiZap },
-  { label: "Clean Code", value: "Focus", icon: FiCheckCircle },
+  { label: "Projects Built",       value: "30+",        icon: FiAward },
+  { label: "Started Coding",       value: "Late 2024",  icon: FiZap },
+  { label: "Current Focus",        value: "Next.js",    icon: FiTrendingUp },
+  { label: "Career Goal",          value: "Full Stack", icon: FiCheckCircle },
 ];
 
 const services = [
   {
     title: "Frontend Development",
-    desc: "Building scalable, high-performance web applications using modern React patterns.",
+    desc: "Building modern, responsive web applications with React and Next.js, focused on clean code and great UX.",
     icon: FiCode,
   },
   {
     title: "Responsive Web Design",
-    desc: "Ensuring your website looks perfect on every device, from mobile to ultra-wide.",
+    desc: "Crafting mobile-first layouts that look and feel great across every screen size and device.",
     icon: FiSmartphone,
   },
   {
     title: "UI Implementation",
-    desc: "Translating complex design systems into pixel-perfect, accessible React components.",
+    desc: "Turning designs into precise, accessible, and performant React components with attention to detail.",
     icon: FiLayout,
   },
 ];
@@ -65,12 +65,10 @@ const Showcase = () => {
                   <div className="w-10 h-10 rounded-xl bg-gradient-to-tr from-primary to-blue-400"></div>
                 </div>
                 <h3 className="text-[32px] md:text-[40px] font-bold tracking-tighter mb-6 leading-tight text-on-surface">
-                  Crafting Digital <br /> Excellence.
+                  Building for the <br /> <span className="text-primary">modern web.</span>
                 </h3>
                 <p className="text-body-md text-on-surface-variant leading-relaxed">
-                  I'm a dedicated frontend developer with a passion for building 
-                  modern, performant web applications. My focus lies at the 
-                  intersection of clean code and exceptional user experience.
+                  I'm <span className="font-bold text-on-surface">Nahid Ahamed</span>, a Frontend Developer who started coding in late 2024 and quickly developed a strong passion for building modern, user-friendly web experiences. I'm on a focused path toward becoming a Full Stack Developer.
                 </p>
               </div>
               <div className="mt-12 flex items-center gap-4">
@@ -79,7 +77,7 @@ const Showcase = () => {
                     <div key={i} className="w-10 h-10 rounded-full border-2 border-white bg-primary/20" />
                   ))}
                 </div>
-                <p className="text-[12px] font-extrabold text-primary tracking-widest uppercase">HIREABLE NOW</p>
+                <p className="text-[12px] font-extrabold text-primary tracking-widest uppercase">Open to Opportunities</p>
               </div>
             </div>
           </motion.div>
@@ -93,7 +91,7 @@ const Showcase = () => {
                     <div className="w-12 h-12 bg-primary/5 rounded-xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform">
                       <service.icon className="text-primary text-[24px]" />
                     </div>
-                    <h4 className="text-[20px] font-bold mb-4 tracking-tight text-on-surface">{service.title}</h4>
+                    <h3 className="text-[20px] font-bold mb-4 tracking-tight text-on-surface">{service.title}</h3>
                     <p className="text-[14px] text-on-surface-variant leading-relaxed">
                       {service.desc}
                     </p>
@@ -106,11 +104,11 @@ const Showcase = () => {
             <motion.div variants={itemVariants}>
               <div className="h-full glass-panel p-10 rounded-[2.5rem] bg-secondary text-white border-transparent shadow-2xl shadow-secondary/10">
                 <div className="flex items-center gap-3 mb-6">
-                  <FiBookOpen className="text-primary" />
+                  <FiBookOpen className="text-white" />
                   <span className="text-[11px] font-extrabold tracking-[0.2em] uppercase">Currently Learning</span>
                 </div>
                 <ul className="space-y-4">
-                  {["Next.js Core Patterns", "Backend Foundations", "API Optimization", "Auth Systems"].map((item) => (
+                  {["Advanced Next.js", "TypeScript", "Authentication", "Performance Optimization"].map((item) => (
                     <li key={item} className="flex items-center gap-3 text-[14px] font-medium opacity-80">
                       <div className="w-1.5 h-1.5 rounded-full bg-primary" />
                       {item}

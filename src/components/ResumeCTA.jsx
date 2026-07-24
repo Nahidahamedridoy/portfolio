@@ -54,6 +54,7 @@ const ResumeCTA = () => {
                   <a 
                     href="/resume.pdf" 
                     target="_blank"
+                    rel="noopener noreferrer"
                     className="inline-flex items-center gap-4 bg-secondary text-white px-10 py-5 rounded-2xl font-bold hover:shadow-2xl hover:shadow-secondary/30 transition-all duration-500 active:scale-95 group"
                   >
                     Download Resume

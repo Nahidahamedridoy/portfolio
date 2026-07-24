@@ -10,8 +10,21 @@ const plusJakartaSans = Plus_Jakarta_Sans({
 });
 
 export const metadata = {
-  title: "Nahid Ahamed Ridoy - Portfolio",
-  description: "Frontend & Web Developer Portfolio",
+  title: "Nahid Ahamed — Frontend Developer",
+  description: "Portfolio of Nahid Ahamed — a Frontend Developer specialising in React, Next.js and TypeScript. Building modern, responsive, and user-friendly web applications.",
+  keywords: ["Frontend Developer", "React Developer", "Next.js Developer", "TypeScript", "Portfolio", "Nahid Ahamed"],
+  authors: [{ name: "Nahid Ahamed" }],
+  openGraph: {
+    title: "Nahid Ahamed — Frontend Developer",
+    description: "Building modern, responsive, and user-friendly web applications with React and Next.js.",
+    type: "website",
+    locale: "en_US",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Nahid Ahamed — Frontend Developer",
+    description: "Building modern, responsive, and user-friendly web applications with React and Next.js.",
+  },
 };
 
 export default function RootLayout({ children }) {

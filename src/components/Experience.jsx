@@ -9,22 +9,22 @@ gsap.registerPlugin(ScrollTrigger);
 
 const experiences = [
   {
-    company: "Google",
-    role: "Senior Product Designer",
-    period: "2022 - Present",
-    description: "Leading design systems for Next-Gen productivity tools. Collaborative with cross-functional teams to deliver pixel-perfect solutions.",
+    company: "Continuous Learning",
+    role: "Frontend Development Journey",
+    period: "2024",
+    description: "Started learning web development, building a strong foundation in modern web technologies. Focused on creating responsive, accessible, and performant user interfaces using HTML, CSS, JavaScript, and Tailwind CSS.",
   },
   {
-    company: "Meta",
-    role: "Product Designer",
-    period: "2020 - 2022",
-    description: "Designed core interactions for social discovery features. Improved user retention by 15% through data-driven design iterations.",
+    company: "Personal Projects",
+    role: "React.js Applications",
+    period: "2024",
+    description: "Developed interactive single-page applications focusing on state management, component reusability, and API integrations. Built fully functional web apps that solve real-world problems.",
   },
   {
-    company: "Airbnb",
-    role: "UI/UX Intern",
-    period: "2019 - 2020",
-    description: "Assisted in redesigning the booking flow. Conducted user research and usability testing for new mobile features.",
+    company: "Skill Advancement",
+    role: "Next.js & TypeScript Focus",
+    period: "Present",
+    description: "Currently mastering Next.js for server-side rendering, routing, and full-stack capabilities. Concurrently improving TypeScript skills to write more robust, type-safe, and maintainable code.",
   },
 ];
 
@@ -64,12 +64,15 @@ const Experience = () => {
   }, []);
 
   return (
-    <section ref={containerRef} className="py-section-gap px-margin-x-mobile md:px-margin-x-desktop bg-white relative">
+    <section ref={containerRef} id="experience" className="py-section-gap px-margin-x-mobile md:px-margin-x-desktop bg-white relative">
       <div className="max-w-container-max mx-auto">
         <div className="mb-24 text-center">
-            <h2 className="text-[48px] md:text-[80px] font-bold tracking-tighter leading-none">
-                Professional <br /> <span className="text-primary">Journey</span>
-            </h2>
+          <div className="inline-block px-5 py-1.5 rounded-full glass-panel mb-6 border-primary/20">
+            <span className="text-label-md text-primary font-bold uppercase tracking-[0.2em]">My Journey</span>
+          </div>
+          <h2 className="text-[48px] md:text-[80px] font-bold tracking-tighter leading-none">
+            Development <br /> <span className="text-primary">Journey</span>
+          </h2>
         </div>
 
         <div className="relative">
@@ -77,6 +80,7 @@ const Experience = () => {
           <div 
             ref={lineRef}
             className="absolute left-1/2 top-0 bottom-0 w-[2px] bg-primary/20 -translate-x-1/2 hidden md:block" 
+            aria-hidden="true"
           />
 
           <div className="space-y-24">
@@ -91,27 +95,27 @@ const Experience = () => {
                 <div className="md:w-1/2 w-full">
                   <motion.div 
                     whileHover={{ scale: 1.02 }}
-                    className="glass-panel p-10 rounded-[2rem] border-primary/5 hover:border-primary/20 transition-colors"
+                    className="glass-panel p-8 md:p-10 rounded-[2rem] border-primary/5 hover:border-primary/20 transition-colors"
                   >
-                    <div className="flex justify-between items-start mb-6">
+                    <div className="flex flex-col sm:flex-row sm:justify-between sm:items-start mb-6 gap-4 sm:gap-0">
                       <div>
-                        <h3 className="text-[28px] font-bold text-on-surface">{exp.role}</h3>
-                        <p className="text-primary font-bold uppercase tracking-widest text-[14px]">
+                        <h3 className="text-[24px] md:text-[28px] font-bold text-on-surface leading-tight mb-1">{exp.role}</h3>
+                        <p className="text-primary font-bold uppercase tracking-wider text-[13px] md:text-[14px]">
                           {exp.company}
                         </p>
                       </div>
-                      <span className="px-4 py-1 rounded-full bg-primary/5 text-primary text-[14px] font-bold">
+                      <span className="inline-block self-start px-4 py-1.5 rounded-full bg-primary/5 text-primary text-[12px] md:text-[14px] font-bold">
                         {exp.period}
                       </span>
                     </div>
-                    <p className="text-body-md text-on-surface-variant leading-relaxed">
+                    <p className="text-[16px] md:text-[17px] text-on-surface-variant leading-relaxed">
                       {exp.description}
                     </p>
                   </motion.div>
                 </div>
 
                 {/* Dot */}
-                <div className="relative z-10 w-4 h-4 rounded-full bg-primary border-4 border-white shadow-lg hidden md:block" />
+                <div className="relative z-10 w-4 h-4 rounded-full bg-primary border-4 border-white shadow-lg hidden md:block" aria-hidden="true" />
 
                 {/* Spacer */}
                 <div className="md:w-1/2 hidden md:block" />

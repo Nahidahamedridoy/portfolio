@@ -5,36 +5,11 @@ import gsap from "gsap";
 import { ScrollTrigger } from "gsap/dist/ScrollTrigger";
 import { motion } from "framer-motion";
 import { FaGithub, FaExternalLinkAlt } from "react-icons/fa";
-import Magnetic from "./Magnetic";
+import Image from "next/image";
+import Link from "next/link";
+import { projects } from "@/lib/data";
 
 gsap.registerPlugin(ScrollTrigger);
-
-const projects = [
-  {
-    title: "Summer Cart",
-    category: "E-commerce Platform",
-    image: "https://images.unsplash.com/photo-1557821552-17105176677c?auto=format&fit=crop&q=80&w=800",
-    color: "#E0E7FF",
-    repo: "https://github.com/Nahidahamedridoy/A8-SunCart",
-    live: "https://a8-sun-cart.vercel.app/"
-  },
-  {
-    title: "Dragon News",
-    category: "News Portal",
-    image: "https://images.unsplash.com/photo-1504711434969-e33886168f5c?auto=format&fit=crop&q=80&w=800",
-    color: "#DCFCE7",
-    repo: "https://github.com/Nahidahamedridoy/Dragon-News",
-    live: "https://dragon-news-ochre-beta.vercel.app/category/01"
-  },
-  {
-    title: "English Janala",
-    category: "Learning Platform",
-    image: "https://images.unsplash.com/photo-1456513080510-7bf3a84b82f8?auto=format&fit=crop&q=80&w=800",
-    color: "#FEE2E2",
-    repo: "https://github.com/Nahidahamedridoy/English-Janala",
-    live: "https://nahidahamedridoy.github.io/English-Janala/"
-  }
-];
 
 const Projects = () => {
   const containerRef = useRef(null);
@@ -79,57 +54,51 @@ const Projects = () => {
               className="flex-shrink-0 w-[400px] md:w-[600px] group cursor-default"
             >
               <div 
-                className="aspect-[4/3] rounded-[2.5rem] overflow-hidden mb-8 relative shadow-2xl shadow-blue-900/5"
+                className="aspect-[16/10] rounded-[2rem] overflow-hidden mb-6 relative shadow-2xl shadow-blue-900/5 group-hover:shadow-primary/20 transition-all duration-500"
                 style={{ backgroundColor: project.color }}
               >
-                <img 
+                <Image 
                   src={project.image} 
                   alt={project.title}
-                  className="w-full h-full object-cover mix-blend-multiply opacity-80 group-hover:scale-110 group-hover:opacity-100 transition-all duration-700"
+                  fill
+                  sizes="(max-width: 768px) 100vw, 600px"
+                  className="object-cover mix-blend-multiply opacity-90 group-hover:scale-105 group-hover:opacity-100 transition-transform duration-700 ease-out"
                 />
-                
-                {/* Hover Overlay */}
-                <div className="absolute inset-0 bg-secondary/60 opacity-0 group-hover:opacity-100 transition-all duration-500 backdrop-blur-sm flex items-center justify-center gap-6">
-                  <Magnetic strength={0.4}>
-                    <a 
-                      href={project.repo} 
-                      target="_blank" 
-                      rel="noopener noreferrer"
-                      className="w-16 h-16 bg-white rounded-full flex items-center justify-center text-secondary hover:bg-primary hover:text-white transition-all duration-300"
-                    >
-                      <FaGithub className="text-[24px]" />
-                    </a>
-                  </Magnetic>
-                  <Magnetic strength={0.4}>
-                    <a 
-                      href={project.live} 
-                      target="_blank" 
-                      rel="noopener noreferrer"
-                      className="w-16 h-16 bg-white rounded-full flex items-center justify-center text-secondary hover:bg-primary hover:text-white transition-all duration-300"
-                    >
-                      <FaExternalLinkAlt className="text-[20px]" />
-                    </a>
-                  </Magnetic>
-                </div>
               </div>
 
-              <div className="flex justify-between items-end">
+              <div className="flex flex-col gap-4">
                 <div>
-                  <p className="text-label-md text-primary font-bold uppercase tracking-widest mb-2">
+                  <p className="text-[12px] md:text-[14px] text-primary font-bold uppercase tracking-widest mb-1">
                     {project.category}
                   </p>
-                  <h3 className="text-[32px] md:text-[40px] font-bold tracking-tight text-on-surface leading-tight">
+                  <h3 className="text-[28px] md:text-[36px] font-bold tracking-tight text-on-surface leading-tight">
                     {project.title}
                   </h3>
                 </div>
-                <a 
-                  href={project.live} 
-                  target="_blank" 
-                  rel="noopener noreferrer"
-                  className="hidden group-hover:block animate-pulse hover:scale-110 transition-transform"
-                >
-                   <span className="text-primary font-bold tracking-tighter cursor-pointer">VIEW PROJECT →</span>
-                </a>
+                
+                <p className="text-[15px] md:text-[16px] text-on-surface-variant leading-relaxed line-clamp-2">
+                  {project.description}
+                </p>
+
+                <div className="flex flex-wrap gap-2 mt-1">
+                  {project.techStack.map((tech, i) => (
+                    <span key={i} className="px-3 py-1 rounded-full bg-primary/5 border border-primary/10 text-primary text-[12px] font-semibold">
+                      {tech}
+                    </span>
+                  ))}
+                </div>
+
+                <div className="mt-4 flex items-center gap-4">
+                  <Link href={`/projects/${project.id}`} className="px-6 py-3 bg-primary text-white rounded-xl font-bold hover:bg-primary/90 transition-colors shadow-lg shadow-primary/20 text-[14px]">
+                    View Details
+                  </Link>
+                  <a href={project.repo} target="_blank" rel="noopener noreferrer" className="p-3 bg-secondary/5 rounded-full text-secondary hover:bg-primary hover:text-white transition-colors" aria-label="GitHub Repository">
+                    <FaGithub size={20} />
+                  </a>
+                  <a href={project.live} target="_blank" rel="noopener noreferrer" className="p-3 bg-secondary/5 rounded-full text-secondary hover:bg-primary hover:text-white transition-colors" aria-label="Live Demo">
+                    <FaExternalLinkAlt size={18} />
+                  </a>
+                </div>
               </div>
             </motion.div>
           ))}

@@ -1,6 +1,7 @@
 "use client";
 
 import React, { useState, useEffect } from "react";
+import Image from "next/image";
 import { motion, useScroll, useTransform, AnimatePresence } from "framer-motion";
 import { fadeInDown } from "@/lib/animations";
 import Magnetic from "./Magnetic";
@@ -9,8 +10,8 @@ import { Menu, X } from "lucide-react";
 
 const navItems = [
   { name: "Home", id: "home" },
-  { name: "Services", id: "services" },
   { name: "About", id: "about" },
+  { name: "Experience", id: "experience" },
   { name: "Tech", id: "technologies" },
   { name: "Work", id: "work" },
   { name: "Contact", id: "contact" },
@@ -40,7 +41,7 @@ const Navbar = () => {
   useEffect(() => {
     const observerOptions = {
       root: null,
-      rootMargin: "-20% 0px -70% 0px",
+      rootMargin: "-30% 0px -30% 0px",
       threshold: 0,
     };
 
@@ -105,7 +106,7 @@ const Navbar = () => {
               className="flex items-center gap-2 md:gap-3 cursor-pointer group"
             >
               <div className="w-8 h-8 md:w-10 md:h-10 rounded-full overflow-hidden border-2 border-primary/20 flex items-center justify-center shadow-md group-hover:rotate-12 transition-all duration-500">
-                <img src="/photo.jpg" alt="Nahid" className="w-full h-full object-cover" />
+                <Image src="/photo.jpg" alt="Nahid" width={40} height={40} className="w-full h-full object-cover" />
               </div>
               <span className="text-[14px] md:text-body-lg font-bold tracking-tighter text-on-surface uppercase">
                 Nahid Ahamed
@@ -140,7 +141,8 @@ const Navbar = () => {
             <Magnetic strength={0.3}>
               <a 
                 href="/resume.pdf" 
-                target="_blank" 
+                target="_blank"
+                rel="noopener noreferrer"
                 className="hidden sm:flex text-[11px] md:text-[13px] font-bold text-on-surface-variant hover:text-primary transition-colors uppercase tracking-[0.2em] px-4 py-2"
               >
                 Resume
@@ -162,6 +164,8 @@ const Navbar = () => {
             {/* Mobile Menu Toggle */}
             <button 
               onClick={() => setIsMenuOpen(!isMenuOpen)}
+              aria-label="Toggle menu"
+              aria-expanded={isMenuOpen}
               className="md:hidden w-10 h-10 flex items-center justify-center rounded-full glass-panel"
             >
               {isMenuOpen ? <X size={20} /> : <Menu size={20} />}
@@ -195,7 +199,8 @@ const Navbar = () => {
               <div className="h-[1px] bg-primary/10 my-2" />
               <a 
                 href="/resume.pdf" 
-                target="_blank" 
+                target="_blank"
+                rel="noopener noreferrer"
                 className="flex items-center justify-center gap-3 p-4 rounded-xl bg-primary/5 text-primary font-bold uppercase tracking-widest text-[14px]"
               >
                 Download Resume
