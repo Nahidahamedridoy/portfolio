@@ -11,7 +11,8 @@ import { Menu, X } from "lucide-react";
 const navItems = [
   { name: "Home", id: "home" },
   { name: "About", id: "about" },
-  { name: "Experience", id: "experience" },
+  // Points to the Qualification section; `tab` tells it which tab to activate
+  { name: "Experience", id: "qualification", tab: "experience" },
   { name: "Tech", id: "technologies" },
   { name: "Work", id: "work" },
   { name: "Contact", id: "contact" },
@@ -63,7 +64,7 @@ const Navbar = () => {
     return () => observer.disconnect();
   }, []);
 
-  const scrollToSection = (e, id) => {
+  const scrollToSection = (e, id, tab) => {
     e.preventDefault();
     setIsMenuOpen(false);
     const element = document.getElementById(id);
@@ -76,6 +77,12 @@ const Navbar = () => {
         top: offsetPosition,
         behavior: "smooth"
       });
+    }
+    // Notify the Qualification component which tab to activate
+    if (tab) {
+      window.dispatchEvent(
+        new CustomEvent("qualificationTabChange", { detail: { tab } })
+      );
     }
   };
 
@@ -102,7 +109,7 @@ const Navbar = () => {
           <Magnetic strength={0.2}>
             <a 
               href="#home" 
-              onClick={(e) => scrollToSection(e, "home")}
+              onClick={(e) => scrollToSection(e, "home", null)}
               className="flex items-center gap-2 md:gap-3 cursor-pointer group"
             >
               <div className="w-8 h-8 md:w-10 md:h-10 rounded-full overflow-hidden border-2 border-primary/20 flex items-center justify-center shadow-md group-hover:rotate-12 transition-all duration-500">
@@ -124,7 +131,7 @@ const Navbar = () => {
                     activeSection === item.id ? "text-primary font-bold" : "text-on-surface-variant hover:text-primary"
                   )}
                   href={`#${item.id}`}
-                  onClick={(e) => scrollToSection(e, item.id)}
+                  onClick={(e) => scrollToSection(e, item.id, item.tab)}
                 >
                   <span className={cn(
                     "text-[10px] font-bold",
@@ -151,7 +158,7 @@ const Navbar = () => {
             
             <Magnetic strength={0.4}>
               <button 
-                onClick={(e) => scrollToSection(e, "contact")}
+                onClick={(e) => scrollToSection(e, "contact", null)}
                 className="hidden md:flex group bg-secondary text-white rounded-full pl-6 pr-1 py-1 items-center gap-4 hover:shadow-xl transition-all duration-300"
               >
                 <span className="text-label-md">Contact</span>
@@ -186,7 +193,7 @@ const Navbar = () => {
                 <a
                   key={item.id}
                   href={`#${item.id}`}
-                  onClick={(e) => scrollToSection(e, item.id)}
+                  onClick={(e) => scrollToSection(e, item.id, item.tab)}
                   className={cn(
                     "flex items-center justify-between p-4 rounded-xl transition-colors",
                     activeSection === item.id ? "bg-primary/10 text-primary font-bold" : "hover:bg-primary/5"

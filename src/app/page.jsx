@@ -19,7 +19,7 @@ export default function Home() {
         <Showcase />
         <About />
         <Technologies />
-        <Qualification />
+        <Qualification/>
         <Projects />
         <ResumeCTA />
         <Contact />

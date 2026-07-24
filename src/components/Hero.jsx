@@ -95,7 +95,7 @@ const Hero = () => {
           </div>
 
           <p className="reveal-item text-[18px] md:text-[20px] text-on-surface-variant mb-8 max-w-lg leading-relaxed">
-            Crafting premium web experiences with clean code and pixel-perfect design.
+            Building modern, responsive, and user-focused web applications with React, Next.js, and TypeScript.
           </p>
 
           <div className="reveal-item flex flex-wrap gap-4 justify-center md:justify-start mb-8">

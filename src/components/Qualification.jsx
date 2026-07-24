@@ -1,7 +1,7 @@
 "use client";
 
-import React, { useState, useRef } from "react";
-import { motion, AnimatePresence } from "framer-motion";
+import React, { useState, useRef, useEffect } from "react";
+import { motion } from "framer-motion";
 import { Briefcase, GraduationCap, Calendar } from "lucide-react";
 import { cn } from "@/lib/utils";
 import Magnetic from "./Magnetic";
@@ -47,13 +47,20 @@ const educationData = [
 
 const Qualification = () => {
   const [activeTab, setActiveTab] = useState("education");
-  const containerRef = useRef(null);
+  const sectionRef = useRef(null);
+
+  // Listen for tab-switch events dispatched by the Navbar
+  useEffect(() => {
+    const handler = (e) => setActiveTab(e.detail.tab);
+    window.addEventListener("qualificationTabChange", handler);
+    return () => window.removeEventListener("qualificationTabChange", handler);
+  }, []);
 
   const data = activeTab === "experience" ? experienceData : educationData;
 
   return (
     <section
-      ref={containerRef}
+      ref={sectionRef}
       id="qualification"
       className="py-section-gap px-margin-x-mobile md:px-margin-x-desktop bg-[#f8faff] relative overflow-hidden"
     >
@@ -108,57 +115,62 @@ const Qualification = () => {
           {/* Central Line */}
           <div className="absolute left-1/2 top-0 bottom-0 w-[2px] bg-primary/10 -translate-x-1/2 hidden md:block" />
 
-          <AnimatePresence mode="wait">
-            <motion.div
-              key={activeTab}
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              exit={{ opacity: 0, y: -20 }}
-              transition={{ duration: 0.5, ease: "circOut" }}
-              className="space-y-16"
-            >
-              {data.map((item, idx) => (
-                <div
-                  key={idx}
-                  className={cn(
-                    "relative flex flex-col md:flex-row items-center justify-center gap-8 md:gap-0 w-full",
-                    idx % 2 === 0 ? "md:flex-row" : "md:flex-row-reverse"
-                  )}
+          {/*
+           * AnimatePresence mode="wait" was removed — it conflicts with Lenis
+           * (the smooth-scroll library), which moves DOM nodes for its scroll
+           * transforms and breaks the parent-node reference React relies on
+           * when inserting the next keyed element, causing an insertBefore crash.
+           * A keyed motion.div with an enter-only animation is equally smooth
+           * and avoids the issue entirely.
+           */}
+          <motion.div
+            key={activeTab}
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5, ease: "circOut" }}
+            className="space-y-16"
+          >
+            {data.map((item, idx) => (
+              <div
+                key={item.title}
+                className={cn(
+                  "relative flex flex-col md:flex-row items-center justify-center gap-8 md:gap-0 w-full",
+                  idx % 2 === 0 ? "md:flex-row" : "md:flex-row-reverse"
+                )}
+              >
+                {/* Timeline Card */}
+                <motion.div
+                  initial={{ opacity: 0, x: idx % 2 === 0 ? -40 : 40 }}
+                  whileInView={{ opacity: 1, x: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ duration: 0.8, delay: idx * 0.1 }}
+                  className="w-full md:w-[calc(50%-40px)]"
                 >
-                  {/* Timeline Card */}
-                  <motion.div
-                    initial={{ opacity: 0, x: idx % 2 === 0 ? -40 : 40 }}
-                    whileInView={{ opacity: 1, x: 0 }}
-                    viewport={{ once: true }}
-                    transition={{ duration: 0.8, delay: idx * 0.1 }}
-                    className="w-full md:w-[calc(50%-40px)]"
-                  >
-                    <div className="glass-panel p-8 rounded-[2.5rem] border-primary/5 hover:border-primary/20 transition-all duration-500 shadow-xl shadow-blue-900/5 bg-white/60 backdrop-blur-xl group relative">
-                      <div className="flex items-center gap-2 text-primary font-bold text-[12px] uppercase tracking-widest mb-4">
-                        <Calendar className="w-3.5 h-3.5" />
-                        {item.date}
-                      </div>
-                      <h3 className="text-[22px] font-bold mb-2 text-on-surface group-hover:text-primary transition-colors">{item.title}</h3>
-                      <p className="text-on-surface-variant font-medium text-[15px] mb-4">{item.subtitle}</p>
-                      {item.desc && (
-                        <p className="text-on-surface-variant/70 text-[14px] leading-relaxed">
-                          {item.desc}
-                        </p>
-                      )}
+                  <div className="glass-panel p-8 rounded-[2.5rem] border-primary/5 hover:border-primary/20 transition-all duration-500 shadow-xl shadow-blue-900/5 bg-white/60 backdrop-blur-xl group relative">
+                    <div className="flex items-center gap-2 text-primary font-bold text-[12px] uppercase tracking-widest mb-4">
+                      <Calendar className="w-3.5 h-3.5" aria-hidden="true" />
+                      {item.date}
                     </div>
-                  </motion.div>
-
-                  {/* Central Dot */}
-                  <div className="relative z-10 w-12 h-12 flex items-center justify-center">
-                    <div className="w-4 h-4 rounded-full bg-primary border-4 border-white shadow-lg ring-4 ring-primary/5" />
+                    <h3 className="text-[22px] font-bold mb-2 text-on-surface group-hover:text-primary transition-colors">{item.title}</h3>
+                    <p className="text-on-surface-variant font-medium text-[15px] mb-4">{item.subtitle}</p>
+                    {item.desc && (
+                      <p className="text-on-surface-variant/70 text-[14px] leading-relaxed">
+                        {item.desc}
+                      </p>
+                    )}
                   </div>
+                </motion.div>
 
-                  {/* Spacer for other side */}
-                  <div className="hidden md:block md:w-[calc(50%-40px)]" />
+                {/* Central Dot */}
+                <div className="relative z-10 w-12 h-12 flex items-center justify-center" aria-hidden="true">
+                  <div className="w-4 h-4 rounded-full bg-primary border-4 border-white shadow-lg ring-4 ring-primary/5" />
                 </div>
-              ))}
-            </motion.div>
-          </AnimatePresence>
+
+                {/* Spacer for other side */}
+                <div className="hidden md:block md:w-[calc(50%-40px)]" aria-hidden="true" />
+              </div>
+            ))}
+          </motion.div>
         </div>
       </div>
 
