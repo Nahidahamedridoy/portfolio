@@ -1,23 +1,43 @@
 export const projects = [
   {
-    id: "summer-cart",
-    title: "Summer Cart",
-    category: "E-commerce Platform",
-    image: "https://images.unsplash.com/photo-1557821552-17105176677c?auto=format&fit=crop&q=80&w=800",
-    color: "#E0E7FF",
-    repo: "https://github.com/Nahidahamedridoy/A8-SunCart",
-    live: "https://a8-sun-cart.vercel.app/",
-    description: "A modern e-commerce platform offering a seamless shopping experience with intuitive product discovery and secure checkout.",
-    techStack: ["React", "Tailwind CSS", "Node.js", "MongoDB"],
-    overview: "Summer Cart is a fully responsive e-commerce web application designed to provide users with an engaging and effortless shopping experience. It features dynamic product listings, a robust cart system, and seamless user authentication.",
-    features: [
-      "Dynamic product catalog with advanced filtering and search",
-      "Secure user authentication and authorization",
-      "Interactive shopping cart with real-time total calculation",
-      "Responsive design optimized for both mobile and desktop"
+    id: "rent-nest",
+    title: "Rent Nest",
+    category: "Property Rental Platform",
+    image: "/projects/rentnest.jpg",
+    color: "#DCFCE7",
+    repo: "https://github.com/Nahidahamedridoy/A10-Rent-Nest-Client",
+    live: "https://a10-rent-nest.vercel.app",
+    description:
+      "A modern full-stack property rental platform where tenants can discover rental properties, owners can manage listings, and administrators oversee the entire system through dedicated dashboards.",
+    techStack: [
+      "React",
+      "Tailwind CSS",
+      "Node.js",
+      "Express.js",
+      "MongoDB",
+      "Firebase Authentication",
+      "JWT",
+      "Stripe"
     ],
-    challenges: "Handling state management for the shopping cart across different components while ensuring the UI remained perfectly synced with the backend database was a significant technical challenge.",
-    futureImprovements: "Implement a fully functional payment gateway integration and add a comprehensive admin dashboard for inventory management."
+    overview:
+      "Rent Nest is a MERN-based rental platform designed to simplify property management and booking. It provides separate dashboards for tenants, property owners, and administrators, along with secure authentication, online payments, and responsive user experience.",
+
+    features: [
+      "Role-based dashboards (Admin, Owner & Tenant)",
+      "Secure authentication with Firebase and JWT",
+      "Property listing and management",
+      "Stripe payment integration",
+      "Wishlist/Favorite properties",
+      "Booking management system",
+      "Admin property approval and user management",
+      "Fully responsive design"
+    ],
+
+    challenges:
+      "Implementing role-based authorization, integrating secure Stripe payments, protecting APIs with JWT, and managing multiple dashboards while maintaining a consistent user experience.",
+
+    futureImprovements:
+      "Add real-time messaging between tenants and owners, property reviews and ratings, Google Maps integration, advanced property filtering, email notifications, and analytics dashboard."
   },
   {
     id: "dragon-news",
@@ -40,23 +60,42 @@ export const projects = [
     futureImprovements: "Add a personalized news feed based on user preferences and implement a comment system for active reader engagement."
   },
   {
-    id: "english-janala",
-    title: "English Janala",
-    category: "Learning Platform",
-    image: "https://images.unsplash.com/photo-1456513080510-7bf3a84b82f8?auto=format&fit=crop&q=80&w=800",
-    color: "#FEE2E2",
-    repo: "https://github.com/Nahidahamedridoy/English-Janala",
-    live: "https://nahidahamedridoy.github.io/English-Janala/",
-    description: "An interactive English learning platform designed to help users improve their vocabulary and grammar through structured lessons.",
-    techStack: ["HTML5", "CSS3", "JavaScript", "Tailwind CSS"],
-    overview: "English Janala is an accessible web-based educational tool tailored for learners who want to enhance their English language skills. It provides structured tutorials, interactive exercises, and a user-friendly interface.",
-    features: [
-      "Structured learning modules for different proficiency levels",
-      "Interactive quizzes and vocabulary exercises",
-      "Progress tracking for registered users",
-      "Fully responsive and accessible UI design"
+    id: "skill-hub",
+    title: "SkillHub",
+    category: "E-Learning Platform",
+    image: "/projects/skillhub.jpg", // Replace with your project image
+    color: "#DBEAFE",
+    repo: "https://github.com/Nahidahamedridoy/skillhub-client",
+    live: "https://your-skillhub-live-link.vercel.app",
+    description:
+      "A modern full-stack e-learning platform that enables users to explore courses, manage learning, and enjoy a secure, fast, and responsive experience built with Next.js and modern web technologies.",
+    techStack: [
+      "Next.js 16",
+      "React",
+      "TypeScript",
+      "Tailwind CSS v4",
+      "HeroUI",
+      "Framer Motion",
+      "Node.js",
+      "Express.js",
+      "MongoDB",
+      "Better Auth"
     ],
-    challenges: "Designing an engaging and intuitive user interface that accommodates learners of all ages without overwhelming them with cognitive load.",
-    futureImprovements: "Integrate spaced repetition algorithms for vocabulary practice and add audio pronunciation guides for challenging words."
+    overview:
+      "SkillHub is a modern full-stack learning platform built to provide a seamless educational experience. It features secure authentication with Better Auth, role-based access, course management, responsive design, and a clean, scalable architecture powered by Next.js and TypeScript.",
+    features: [
+      "Secure authentication with Better Auth",
+      "Role-based access control",
+      "Responsive and modern user interface",
+      "Browse and explore courses",
+      "Protected routes and secure user sessions",
+      "Reusable component architecture",
+      "Fast and optimized performance",
+      "Clean dashboard experience"
+    ],
+    challenges:
+      "Implementing secure authentication with Better Auth, building reusable and scalable components, managing role-based permissions, and maintaining a consistent responsive UI across different devices.",
+    futureImprovements:
+      "Add course enrollment, online payments, video streaming, progress tracking, certificates, instructor dashboard, advanced search & filtering, notifications, and AI-powered course recommendations."
   }
 ];
